@@ -25,7 +25,7 @@ class GetValue
         $a      = 1;
         $x      = &$a;
         $b      = $a++;
-        echo $b;          //b = 1
+        return $b;          //b = 1
     }
 }
 /*
@@ -35,7 +35,7 @@ class GetMaxValue
 {
     public function getMaxValue($num1, $num2, $num3)
     {
-        echo $max = ($num1 > $num2 ? $num1 : $num2) > $num3 ? ($num1 > $num2 ? $num1 : $num2) : $num3;
+        return $max = ($num1 > $num2 ? $num1 : $num2) > $num3 ? ($num1 > $num2 ? $num1 : $num2) : $num3;
     }
 }
 
@@ -49,7 +49,7 @@ class Compare
         $b = 201;
         $c = 40;
         $a = $b > $c ? 4 : 5;
-        echo $a;
+        return $a;
     }
 }
 
@@ -160,7 +160,7 @@ class ChangeStr
     public function change($arr)
     {
         $str = implode(',', $arr);
-        echo $str;
+        return $str;
     }
 }
 
@@ -176,7 +176,7 @@ class ArrChange
             $arrTemp[$value['fid']][] = ['tid' => $value['tid'],'name' => $value['name']];
         }
         $arrTwo = array_values($arrTemp);
-        print_r($arrTwo);
+        return $arrTwo;
     }
 }
 
@@ -199,7 +199,7 @@ class ArrSort
             return false;
         }
         array_multisort($arrKey, $sortOrder, $sortType, $arr);
-        print_r($arr);
+        return $arr;
     }
 }
 
