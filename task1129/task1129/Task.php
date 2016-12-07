@@ -13,7 +13,7 @@ namespace Task1129;
 /*
  * 1.运行以下程序，$b的值是多少    答：$b的值为1,$a在++之前已经将值传递给了b
  */
-class Task1
+class GetValue
 {
     public function getValue()
     {
@@ -31,7 +31,7 @@ class Task1
 /*
  *  2.用最少的代码写一个求三值中最大值的函数。
  */
-class Task2
+class GetMaxValue
 {
     public function getMaxValue($num1, $num2, $num3)
     {
@@ -42,7 +42,7 @@ class Task2
 /*
  * 3.写出以下程序的输出结果并写出原因   输出结果为4,b>c,$b > $c ? 4 : 5的返回值为4，并复制给a；
  */
-class Task3
+class Compare
 {
     public function getValue()
     {
@@ -67,7 +67,7 @@ function timesTwo($int)
  * 5写出以下程序的输出结果并写出原因   输出  相等，相等，不相等
  */
 
-class Task5
+class CompareValue
 {
     public function getValue()
     {
@@ -89,7 +89,7 @@ class Task5
  * isset :若变量不存在则返回 FALSE  ,若变量存在且其值为NULL，也返回 FALSE ,若变量存在且值不为NULL，则返回 TURE
  * empty:若变量不存在则返回 TRUE ,若变量存在且其值为""、0、"0"、NULL、、FALSE、array()、var $var; 以及没有任何属性的对象，则返回 TURE
  */
-class Task6
+class EmptyUse
 {
     public function getValue()
     {
@@ -140,7 +140,7 @@ class Task6
 /*
  * 8 不使用第三个变量交换两个变量的值。
  */
-class Task8
+class ChangeNum
 {
     public function changeNum($num1, $num2)
     {
@@ -155,7 +155,7 @@ class Task8
 /*
  * 9 $arr=[‘zhangsan’,’lisi’,’wangwu’]; 将数组的值用‘,’分隔并合成字符串 zhangsan,lisi,wangwu
  */
-class Task9
+class ChangeStr
 {
     public function change($arr)
     {
@@ -168,7 +168,7 @@ class Task9
  * 10 要求写一段程序，实现以下$arrOne转换为$arrTwo（数组的重新组合）
  */
 
-class Task10
+class ArrChange
 {
     public function arrChange($arrOne)
     {
@@ -183,7 +183,7 @@ class Task10
 /*
  * 11封住一个类对二维数组进行排序（数组的排序）
  */
-class Task11
+class ArrSort
 {
     public function arrSort($arr, $sortKey, $sortOrder, $sortType)
     {
@@ -207,7 +207,7 @@ class Task11
  * 12熟练掌握php数组函数并解释下面列出的函数（根据php手册做练习）
  *
  */
-class Task12
+class FunctionList
 {
     public function arrFun($name, $age)
     {
@@ -280,7 +280,7 @@ class Task12
 /*
  * 利用for 循环输出99乘法表
  */
-class Task13
+class MulTable
 {
     public function mulTable()
     {
