@@ -13,13 +13,13 @@ namespace Task1202;
 
 
 
-class Task1
+class ChangeStr
 {
     public function changeStr($str)
     {
         $arr       = str_split($str, 3);
         $changeStr = implode(',', $arr);
-        echo strrev($changeStr);
+        return strrev($changeStr);
     }
 }
 
@@ -27,11 +27,11 @@ class Task1
  * 2假设现在有一个字符串www.yaochufa.com 如何用php对它进行操作使字符串以moc.afuhcoay.输出
  */
 
-class Task2
+class RevStr
 {
     public function changeStr($str)
     {
-        echo strrev(strstr($str, '.'));
+        return  strrev(strstr($str, '.'));
     }
 }
 
@@ -39,24 +39,24 @@ class Task2
  * 3 请写一个函数，实现以下功能 字符串“my_leader”转换成“MyLeader”、字符串“make_by_name”转换成“MakeByName”
  */
 
-class Task3
+class ReplaceStr
 {
     public function changeStr($str1, $str2)
     {
         $strTemp1 = ucwords(str_replace('_', ' ', $str1));
         echo str_replace(' ', '', $strTemp1);
         $strTemp2 = ucwords(str_replace('_', ' ', $str2));
-        echo str_replace(' ', '', $strTemp2);
+        echo str_replace(' ', '', $strTemp1),str_replace(' ', '', $strTemp2);
     }
 }
 /*
  * 4 $mail=liming@yaochufa.com;请将此邮箱的域（yaochufa.com）取出来，看最多能有几种方法
  */
-class Task4
+class GetStr
 {
     public function changeStr($mail)
     {
-        echo str_replace('@', '', strstr($mail, '@'));
+        return str_replace('@', '', strstr($mail, '@'));
     }
 }
 
@@ -64,20 +64,20 @@ class Task4
  * 翻转字符串中的单词，字符串仅包含大小写字母和空格，单词间使用空格分割。如输入“There is hainan”,输出“hainan is There”
  */
 
-class Task5
+class ReverseStr
 {
     public function changeStr($str)
     {
         $arr       = explode(' ', $str);
         $changeStr = implode(' ', array_reverse($arr));
-        echo  $changeStr;
+        return  $changeStr;
     }
 }
 
 /*
  * 6 封装一个截取字符串类，例如新闻标题过长只需截取20个汉字，多余的用...省略
  */
-class Task6
+class SubStr
 {
     public function subStr($str)
     {
@@ -92,7 +92,7 @@ class Task6
 /*
  * 一些常用的函数的实现
  */
-class Task7
+class StrFun
 {
     public function strFun($str, $arr)
     {
