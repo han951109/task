@@ -1,0 +1,5 @@
+1207作业 - 封装cookie类和session类，写一个登陆和退出功能
+    - CookieClass 封装的cookie类，
+    - SessionClass 封装的session类
+    - cookie 用cookie实现的登陆功能，未登陆用户不允许访问index主页，将自动跳转到login登陆页面，同时包含退出和重新登陆功能
+    - session 用session+cookie实现的登陆功能，将session信息存储在cookie中，未登陆用户不允许访问index主页，将自动跳转到login登陆页面，同时包含退出和重新登陆功能
