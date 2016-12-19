@@ -1,0 +1,132 @@
+数据库作业
+	-封装了三个类，mysql，mysqli，PDO类
+	-完成数据库练习
+第一题.
+    （1） 建立数据库
+              - create database contact;
+    （2）建立员工表
+
+         -   create table worker(
+                  id int(4) not null primary key auto_increment,
+                  name varchar(30) not null,
+                  sex varchar(10) not null,
+                  age int(4) not null default '0',
+                  phone varchar(20) not null,
+                  email varchar(30) not null),
+                  address varchar(50) not null,
+                  jid int(4) not null,
+                  did int(4) not null);
+
+    （3）  建立部门表
+
+         -     create table department(
+                   did int(4) not null primary key
+                   dname varchar(30) not null);
+
+    (4)  建立职位表
+        -       create table job(
+                   jid int(4) not null primary key,
+                   name varchar(30) not null);
+
+
+第二题.
+     (1)创建学生数据库
+            create database student;
+
+     (2)创建学生表
+        create table student(
+              id int(4) not null primary key auto_increment,
+              name varchar(30) not null,
+              age int(4) not null,
+              sex varchar(10) not null,
+              address varchar(50) not null,
+              phone varchar(15) not null);
+
+     (3)添加一列信息，学历
+            alter table student add education varchar(20) not null;
+
+     (4)删除家庭住址
+            alter table student drop address;
+
+     (5)添加数据
+                 insert into student values
+                    (1,'A',22,'男','123456','小学'),
+                    (2,'B',21,'男','119','中学'),
+                    (3,'C',23,'男','110','高中'),
+                    (4,'D',18,'女','114','大学');
+
+     (6)将电话为11开头的学员学历改为大专
+                update student set education='大专' where phone like '11%';
+
+     (7)将姓名以C开头，性别为男的记录删除
+            delete from student where name like 'C%' and sex='男';
+
+     (8)查询学生表的数据，将所有年龄小于22岁的，学历为“大专”的，学生的姓名和学号示出来
+            select id,name from student where age<22 and education='大专';
+
+    (9)查询所有信息，列出前25%的记录
+             select * from student where id<=ceil((select count(*) from student)*0.25);
+
+    (10)查询所有学生的姓名和性别，年龄降序排列
+            select name,sex,age from student order by age desc;
+
+    (11)按照性别分组查询所有的平均年龄
+            select sex,avg(age) as 平均年龄 from student group by sex;
+
+
+第三题
+    （1）建立user，course，point三张表
+
+            create table user(                  建立user表
+                  userNo varchar(10) not null primary key,
+                  userName varchar(30) not null,
+                  currentUnit varchar(30) not null,
+                  age int(4) not null
+                 );
+
+            create table course(                建立课程表
+                        courseNo varchar(10) not null primary key,
+                        courseName varchar(30) not null
+                     );
+
+            create table point(                 建立成绩表
+                       userNo varchar(10) not null primary key,
+                       courseNo varchar(10) not null
+                       grade int(4) not null
+                    );
+
+    （2）查询选修课程名称为’税收基础’的学员学号和姓名
+        select userNo,userName from user where userNo in
+            (select userNo from course c,point p where c.courseNo = p.courseNo and courseName='税收基础');
+
+    (3)查询选修课程编号为’C2’的学员姓名和所属单位
+
+        select userNo,userName from user where userNo in
+                    (select userNo from course c,point p where c.courseNo = p.courseNo and c.courseNo='C2');
+
+    (4)查询不选修课程编号为’C5’的学员姓名和所属单位
+
+         select userName,currentUnit from user where userNo not in
+            (select u.userNo from user u,point p where u.userNo=p.userNo and courseNo='C5');
+
+    (5)查询选修全部课程的学员姓名和所属单位
+        select userName,currentUnit from user where userNo in(
+            select userNo from point right join course on point.courseNo=course.courseNo
+            group by userNo having count(*)=count(userNo))
+
+    (6)查询选修了课程的学员人数
+        select count(userNo) from user where userNo in
+            (select userNo from point);
+
+    (7)查询选修课程超过5门的学员学号和所属单位
+        select userNo,currentUnit from user where user.userNo in
+              (select point.userNo from point group by point.userNo having count(courseNo)>5);
+
+第四题
+    (1)在上一题给出的三个表中添加一个教师表，并与课程表关联，每个课程对应一位教师
+            create table teacher(id int(4) not null primary key auto_increment,name varchar(30) not null);
+
+    (2)查询选修课程名称为’税收基础’的学员学号和姓名以及所选课程的教师信息(四表联查)
+            select userNo,userName,name from user,teacher where
+            (userNo in (select userNo from course c,point p where c.courseNo = p.courseNo and courseName='税收基础'))
+            and (id in (select id from course c,teacher t where c.tid = t.id and courseName='税收基础'));
